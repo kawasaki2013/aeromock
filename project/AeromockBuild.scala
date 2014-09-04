@@ -1,5 +1,7 @@
 import sbt._
 import sbt.Keys._
+import scoverage.ScoverageSbtPlugin.instrumentSettings
+import org.scoverage.coveralls.CoverallsPlugin.coverallsSettings
 
 /**
  * Definition of build on Aeromock.
@@ -70,7 +72,7 @@ object AeromockBuild extends Build {
 
     scalacOptions += "-feature",
     initialCommands in console := "import scalaz._, Scalaz._"
-  )
+  ) ++ instrumentSettings ++ coverallsSettings
 
   lazy val root = Project(
     id = "root",
