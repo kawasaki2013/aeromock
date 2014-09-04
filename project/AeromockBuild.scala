@@ -72,7 +72,7 @@ object AeromockBuild extends Build {
 
     scalacOptions += "-feature",
     initialCommands in console := "import scalaz._, Scalaz._"
-  ) ++ instrumentSettings ++ coverallsSettings
+  )
 
   lazy val root = Project(
     id = "root",
@@ -87,7 +87,7 @@ object AeromockBuild extends Build {
   lazy val aeromock_server = Project(
     id = "aeromock-server",
     base = file("aeromock-server"),
-    settings = baseSettings
+    settings = baseSettings ++ instrumentSettings ++ coverallsSettings
   )
 
   lazy val aeromock_cli = Project(
